@@ -101,9 +101,9 @@ function sortedList() {
     let result = {
         get size() { return innerarray.length },
 
-        add: function(element) {
+        add: function (element) {
             innerarray.push(Number(element));
-           this.sortArray();
+            this.sortArray();
         },
         remove(index) {
             if (index >= 0 && index < innerarray.length) {
@@ -124,8 +124,11 @@ function sortedList() {
     return result
 }
 
-let mylist = sortedList();
-mylist.add(43);
-mylist.add(-100);
-mylist.add(25);
-console.log(mylist.get(0));
+function stringExtension() {
+    String.prototype.ensureStart=function(str){
+        if (!this.toString().startWith(str)) {
+            return str + this.toString();
+        }   
+    }
+
+}
