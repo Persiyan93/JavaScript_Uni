@@ -1,4 +1,5 @@
 function attachEvents() {
+  
     let elements = {
         personName: document.querySelector('#person'),
         phoneNumber: document.querySelector('#phone'),
@@ -16,30 +17,33 @@ function attachEvents() {
         httpRequest.open('DELETE', url);
         httpRequest.send();
         httpRequest.addEventListener('loadend', () => {
-            console.log(httpRequest);
             load();
         })
 
     }
     function addContact(e) {
+        let httpRequest = new XMLHttpRequest();
         let url = `https://phonebook-nakov.firebaseio.com/phonebook.json`
         let personInfo = {
             person: elements.personName.value,
             phone: elements.phoneNumber.value
         }
         let data = JSON.stringify(personInfo);
-        let httpRequest = new XMLHttpRequest();
+       
         httpRequest.open('POST', url);
         httpRequest.send(data);
         httpRequest.addEventListener('loadend', () => {
             load();
+            elements.personName.value = '';
+            elements.phoneNumber.value = '';
         })
     }
     function load() {
+        let httpRequest = new XMLHttpRequest();
         while (elements.ulPhoneBook.childElementCount != 0) {
             elements.ulPhoneBook.removeChild(elements.ulPhoneBook.lastChild);
         }
-        let httpRequest = new XMLHttpRequest();
+       
         let url = `https://phonebook-nakov.firebaseio.com/phonebook.json`;
         httpRequest.open('GET', url);
         httpRequest.send();
