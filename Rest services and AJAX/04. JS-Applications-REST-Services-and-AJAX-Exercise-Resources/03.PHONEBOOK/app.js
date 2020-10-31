@@ -1,20 +1,45 @@
 function attachEvents() {
-    let httpRequest = new XMLHttpRequest();
-    let ulPhoneBook = document.querySelector('#phonebook');
-    let createButton = document.querySelector('#btnCreate');
-    createButton.addEventListener('click', addContact)
+    let elements = {
+        personName: document.querySelector('#person'),
+        phoneNumber: document.querySelector('#phone'),
+        ulPhoneBook: document.querySelector('#phonebook'),
+        createButton: document.querySelector('#btnCreate'),
+        loadButton: document.querySelector('#btnLoad')
+    }
 
-    let loadButton = document.querySelector('#btnLoad');
-    loadButton.addEventListener('click', load);
+    elements.createButton.addEventListener('click', addContact)
+    elements.loadButton.addEventListener('click', load);
     function deletePerson(e) {
-        let personket=e.currentTarget.parentElement.getAttribute('key');
-        console.log(personket);
-        let url = ` https://phonebook-nakov.firebaseio.com/phonebook/.json`
+        let httpRequest = new XMLHttpRequest();
+        let personKey = e.currentTarget.parentElement.getAttribute('key');
+        let url = ` https://phonebook-nakov.firebaseio.com/phonebook/${personKey}.json`
+        httpRequest.open('DELETE', url);
+        httpRequest.send();
+        httpRequest.addEventListener('loadend', () => {
+            console.log(httpRequest);
+            load();
+        })
+
     }
     function addContact(e) {
-
+        let url = `https://phonebook-nakov.firebaseio.com/phonebook.json`
+        let personInfo = {
+            person: elements.personName.value,
+            phone: elements.phoneNumber.value
+        }
+        let data = JSON.stringify(personInfo);
+        let httpRequest = new XMLHttpRequest();
+        httpRequest.open('POST', url);
+        httpRequest.send(data);
+        httpRequest.addEventListener('loadend', () => {
+            load();
+        })
     }
     function load() {
+        while (elements.ulPhoneBook.childElementCount != 0) {
+            elements.ulPhoneBook.removeChild(elements.ulPhoneBook.lastChild);
+        }
+        let httpRequest = new XMLHttpRequest();
         let url = `https://phonebook-nakov.firebaseio.com/phonebook.json`;
         httpRequest.open('GET', url);
         httpRequest.send();
@@ -22,14 +47,13 @@ function attachEvents() {
             let phonebook = JSON.parse(httpRequest.responseText);
             for (const key in phonebook) {
                 let liElement = document.createElement('li');
-                console.log(phonebook[key]);
                 liElement.innerHTML = `${phonebook[key].person}: ${phonebook[key].phone}`
                 liElement.setAttribute('key', key);
                 let deleteButton = document.createElement('button');
                 deleteButton.innerHTML = 'Delete';
                 deleteButton.addEventListener('click', deletePerson);
                 liElement.appendChild(deleteButton);
-                ulPhoneBook.appendChild(liElement);
+                elements.ulPhoneBook.appendChild(liElement);
             }
 
         })
