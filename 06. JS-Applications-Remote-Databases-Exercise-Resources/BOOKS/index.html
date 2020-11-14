@@ -1,12 +1,36 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Books</title>
     <link rel="stylesheet" href="./styles.css">
+    <!-- The core Firebase JS SDK is always required and must be listed first -->
+    <script src="https://www.gstatic.com/firebasejs/8.0.1/firebase-app.js"></script>
+
+    <!-- TODO: Add SDKs for Firebase products that you want to use
+     https://firebase.google.com/docs/web/setup#available-libraries -->
+
+    <script>
+        // Your web app's Firebase configuration
+        var firebaseConfig = {
+            apiKey: "AIzaSyCGEWj8KeQl5ogTa5tWjwe7yBz9ItRzQm4",
+            authDomain: "library-3b0ed.firebaseapp.com",
+            databaseURL: "https://library-3b0ed.firebaseio.com",
+            projectId: "library-3b0ed",
+            storageBucket: "library-3b0ed.appspot.com",
+            messagingSenderId: "564066863236",
+            appId: "1:564066863236:web:2d4fb817285b2740841ad1"
+        };
+        // Initialize Firebase
+        firebase.initializeApp(firebaseConfig);
+        var database = firebase.database();
+        console.log(database);
+    </script>
 </head>
+
 <body>
     <button id="loadBooks">LOAD ALL BOOKS</button>
     <table>
@@ -52,6 +76,7 @@
     </form>
     <script src="./app.js"></script>
 </body>
+
 </html>
 
 <!--Feel free to change/update/modify the HTML Structure-->
