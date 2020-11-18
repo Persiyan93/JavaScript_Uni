@@ -8,3 +8,14 @@ export default async function() {
     }
     this.partial('./templates/register/registerPage.hbs', this.app.userData);
 }
+
+export async function registerPost(){
+    console.log(this.params);
+    console.log(firebase);
+    firebase.auth().createUserWithEmailAndPassword('pesho@abv.bg','dasdasdas')
+    .then((user)=>console.log(user))
+    this.app.userData.loggedIn=true;
+    this.app.userData.username=this.params.username;
+    this.redirect('#/home');
+    
+}
