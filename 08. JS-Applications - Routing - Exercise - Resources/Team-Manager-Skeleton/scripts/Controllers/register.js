@@ -1,4 +1,4 @@
-export default async function() {
+export default async function () {
     this.partials = {
         header: await this.load('./templates/common/header.hbs'),
         footer: await this.load('./templates/common/footer.hbs'),
@@ -9,13 +9,29 @@ export default async function() {
     this.partial('./templates/register/registerPage.hbs', this.app.userData);
 }
 
-export async function registerPost(){
+
+export async function registerPost() {
     console.log(this.params);
     console.log(firebase);
-    firebase.auth().createUserWithEmailAndPassword('pesho@abv.bg','dasdasdas')
-    .then((user)=>console.log(user))
-    this.app.userData.loggedIn=true;
-    this.app.userData.username=this.params.username;
-    this.redirect('#/home');
-    
+    if (this.params.password != this.params.repeatPassword) {
+        window.alert(`Password dont't match`)
+    }
+    else {
+        firebase.auth().createUserWithEmailAndPassword(this.params.username, this.params.password)
+            .then((user) => {
+                this.redirect('#/login');
+            })
+            .catch((error) => {
+              
+                var errorMessage = error.message;
+                alert(errorMessage);
+
+            });
+
+    }
+
+
+
+
+
 }

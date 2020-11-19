@@ -7,3 +7,20 @@ export default async function() {
     }
     this.partial('./templates/login/loginPage.hbs', this.app.userData);
 }
+
+export async function loginPost(){
+    console.log(this.params)
+    firebase.auth().signInWithEmailAndPassword(this.params.username, this.params.password)
+    .then((user) => {
+        this.app.userData.loggedIn=true;
+        this.app.userData.username=user.user.email;
+        localStorage.setItem('userToken',user.user.uid);
+        localStorage.setItem('username',user.user.email);
+    this.redirect('#/home');
+    console.log(user);
+  })
+  .catch((error) => {
+    var errorMessage = error.message;
+    alert(errorMessage);
+  });
+}

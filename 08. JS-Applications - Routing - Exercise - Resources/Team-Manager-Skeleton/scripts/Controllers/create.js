@@ -8,3 +8,17 @@ export default async function() {
     }
     this.partial('./templates/create/createPage.hbs', this.app.userData);
 }
+import {createTeam} from '../data.js'
+export async function createPost(){
+    console.log(this.params);
+    const newTeam={
+        name:this.params.name,
+        comment:this.params.comment
+    }
+    if (Object.values(newTeam).some(v=>v.length==0)) {
+        alert('All fields are required!');
+        return;
+    }
+    const result=await createTeam(newTeam);
+    
+}
