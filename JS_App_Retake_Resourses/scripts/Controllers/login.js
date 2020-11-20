@@ -4,5 +4,6 @@ export default async function() {
         footer: await this.load('./templates/common/footer.hbs')
 
     }
+    
     this.partial('./templates/login.hbs',this.app.userData);
 }

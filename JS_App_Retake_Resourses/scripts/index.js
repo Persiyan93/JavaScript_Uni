@@ -1,5 +1,5 @@
 import home from './Controllers/home.js'
-import register from './Controllers/register.js'
+import register,{registerPost} from './Controllers/register.js'
 import login from './Controllers/login.js'
 import create from './Controllers/create.js'
 import details from './Controllers/details.js'
@@ -8,7 +8,7 @@ window.addEventListener('load', () => {
     const app = Sammy('#main', function () {
         this.use('Handlebars', 'hbs');
         this.userData = {
-            loggedIn: true,
+            loggedIn: false,
             email:'gosho@abv.bg'
         }
 
@@ -19,7 +19,8 @@ window.addEventListener('load', () => {
         this.get('#/register',register);
         this.get('#/login',login);
         this.get('#/create',create);
-        this.get('#/details/:id',details)
+        this.get('#/details',details)
+        this.post('#/register',(ctx)=>{registerPost.call(ctx)})
 
 
 

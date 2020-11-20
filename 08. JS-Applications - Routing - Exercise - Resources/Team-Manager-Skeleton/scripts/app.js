@@ -11,9 +11,9 @@ window.addEventListener('load', () => {
     const app = Sammy('#main', function () {
         this.use('Handlebars', 'hbs');
         this.userData={
-            loggedIn:false,
+            loggedIn:true,
             username:'Persi',
-            hasTeam:false,
+            hasTeam:true,
             isAuthor:true,
             isOnTeam:false,
 

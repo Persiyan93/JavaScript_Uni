@@ -1,9 +1,31 @@
-export default async function() {
+export default async function () {
     this.partials = {
         header: await this.load('./templates/common/header.hbs'),
         footer: await this.load('./templates/common/footer.hbs')
 
     }
-    console.log(this.app.userData);
-    this.partial('./templates/register.hbs',this.app.userData);
+
+    this.partial('./templates/register.hbs', this.app.userData);
+}
+export async function registerPost() {
+   
+
+    let { email, password, repeatedPassword } = this.params;
+    if (email.length == 0 || password < 6 || password != repeatedPassword) {
+        return;
+    }
+
+
+    firebase.auth().createUserWithEmailAndPassword(email, password)
+        .then((user) => {
+            console.log(user);
+            this.redirect('#/home');
+        })
+        .catch((error) => {
+
+            var errorMessage = error.message;
+            alert(errorMessage)
+        });
+
+
 }

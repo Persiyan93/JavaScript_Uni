@@ -4,5 +4,6 @@ export default async function() {
         footer: await this.load('./templates/common/footer.hbs')
 
     }
+    console.log(firebase)
     this.partial('./templates/home/home.hbs',this.app.userData);
 }
