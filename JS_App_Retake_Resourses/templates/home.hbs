@@ -1,5 +1,5 @@
 {{>header}}
-{{#if loggedIn}}
+{{#unless loggedIn}}
 <div class="container">
     <div class="about-us">
         <div>
@@ -7,11 +7,12 @@
             <img src="../public/shoes2.jpg" alt="">
         </div>
         <p>
-            <a href="">Register Now</a> and Try it!
+            <a href="#/register">Register Now</a> and Try it!
         </p>
     </div>
 </div>
-{{else}}
+{{/unless}}
+{{#if loggedIn}}
 <div class="shoes">
     <div class="shoe">
         <img src="https://i1.t4s.cz/products/ar4149-001/nike-air-zoom-pegasus-36-gs-251390-ar4149-001.jpeg">
