@@ -1,14 +1,15 @@
 import home from './Controllers/home.js'
 import register,{registerPost} from './Controllers/register.js'
-import login from './Controllers/login.js'
-import create from './Controllers/create.js'
+import login,{loginPost} from './Controllers/login.js'
+import create ,{createPost}from './Controllers/create.js'
 import details from './Controllers/details.js'
+
 
 window.addEventListener('load', () => {
     const app = Sammy('#main', function () {
         this.use('Handlebars', 'hbs');
         this.userData = {
-            loggedIn: false,
+            loggedIn: true,
             email:'gosho@abv.bg'
         }
 
@@ -19,8 +20,11 @@ window.addEventListener('load', () => {
         this.get('#/register',register);
         this.get('#/login',login);
         this.get('#/create',create);
-        this.get('#/details',details)
+        this.get('#/details:id',details)
         this.post('#/register',(ctx)=>{registerPost.call(ctx)})
+        this.post('#/login',(ctx)=>{loginPost.call(ctx)})
+        this.post('#/create',(ctx)=>{createPost.call(ctx)})
+        
 
 
 

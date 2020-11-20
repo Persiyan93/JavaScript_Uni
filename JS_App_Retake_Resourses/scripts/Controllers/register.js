@@ -8,14 +8,14 @@ export default async function () {
     this.partial('./templates/register.hbs', this.app.userData);
 }
 export async function registerPost() {
-   
+
 
     let { email, password, repeatedPassword } = this.params;
+    console.log(this);
     if (email.length == 0 || password < 6 || password != repeatedPassword) {
         return;
     }
-
-
+    
     firebase.auth().createUserWithEmailAndPassword(email, password)
         .then((user) => {
             console.log(user);
