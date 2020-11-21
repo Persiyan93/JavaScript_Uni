@@ -6,12 +6,16 @@ export default async function() {
 
     }
    
+
+    let currentshoe=this.app.shoesData.filter(x=>x.id===this.params.id)[0];
+    console.log(currentshoe);
+    
    
-    let shoe=data.shoes.filter(x=>x.id==this.params.id)[0];
-    data.shoe=shoe;
-    Object.assign(data,this.app.userData);
-    console.log(data);
+    
+    // data.shoe=shoe;
+    // Object.assign(data,this.app.userData);
+    // console.log(data);
     
     
-    this.partial('./templates/home/detailsModel.hbs',data);
+    this.partial('./templates/home/detailsModel.hbs',currentshoe);
 }

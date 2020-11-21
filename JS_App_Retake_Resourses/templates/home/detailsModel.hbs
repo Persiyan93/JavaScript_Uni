@@ -1,19 +1,21 @@
 {{>header}}
 <div class="offer-details">
-    <h1>{{shoe.model}}</h1>
+    <h1>{{model}}</h1>
     <div class="info">
-        <img src="{{shoe.img}}" alt="">
-        <div class="description">{{shoe.description}}
+        <img src="{{img}}" alt="">
+        <div class="description">{{description}}
             <br>
             <br>
-            <p class="price">${{shoe.price}}</p>
+            <p class="price">${{price}}</p>
         </div>
     </div>
     <div class="actions">
+        {{#if isAuthor}}
         <a>Edit</a>
         <a>Delete</a>
+        {{/if}}
         <a>Buy</a>
-        <span>You bought it</span>
+        <span style="display: none;"  >You bought it</span>
     </div>
 </div>
 {{>footer}}

@@ -8,17 +8,14 @@ export default async function () {
 
     }
 
-    if (localStorage.getItem('userToken')) {
-        let shoes = await getShoes()
-        console.log(shoes)
-        let data = { shoes };
-        localStorage.setItem('shoes',shoes);
-        Object.assign(data, this.app.userData);
-        console.log(data);
-        this.partial('./templates/home/home.hbs', data);
-    }
 
-
+    let shoes = await getShoes();
+    let data = { shoes };
+    localStorage.setItem('shoes', shoes);
+    Object.assign(data, this.app.userData);
+    this.app.shoesData = Object.values(data.shoes);
+    console.log(this.app.shoesData)
+    this.partial('./templates/home/home.hbs', data);
 
 
 }

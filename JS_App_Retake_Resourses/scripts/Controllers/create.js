@@ -19,4 +19,5 @@ export async function createPost(){
 
     }
     console.log(newShoe);
+    
 }
