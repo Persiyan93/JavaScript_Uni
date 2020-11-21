@@ -4,6 +4,7 @@ import login,{loginPost} from './Controllers/login.js'
 import create ,{createPost}from './Controllers/create.js'
 import details from './Controllers/details.js'
 import logout from './Controllers/logout.js';
+import edit,{editPost} from './Controllers/edit.js'
 
 
 window.addEventListener('load', () => {
@@ -26,7 +27,9 @@ window.addEventListener('load', () => {
         this.post('#/login',(ctx)=>{loginPost.call(ctx)})
         this.post('#/create',(ctx)=>{createPost.call(ctx)})
         this.get('#/logout',logout);
-        this.get('#/edit',edit);
+        this.get('#/edit:id',edit);
+        this.post('#/edit:id',(ctx)=>{editPost.call(ctx)})
+
         
 
 

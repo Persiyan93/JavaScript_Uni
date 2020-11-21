@@ -11,10 +11,10 @@
     </div>
     <div class="actions">
         {{#if isAuthor}}
-        <a action="#/edit{{id}}">Edit</a>
-        <a>Delete</a>
+        <a href="#/edit{{id}}" >Edit</a>
+        <a href="#/delete{{id}}"> Delete</a>
         {{else}}
-        <a>Buy</a>
+        <a href="#/buy{{id}}">Buy</a>
         {{/if}}
         <span style="display: none;"  >You bought it</span>
     </div>
