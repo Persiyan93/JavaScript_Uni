@@ -10,12 +10,16 @@ export default async function () {
 
 
     let shoes = await getShoes();
+    for (const key in shoes) {
+       shoes[key].id=key;
+    }
     let data = { shoes };
-    localStorage.setItem('shoes', shoes);
-    Object.assign(data, this.app.userData);
-    this.app.shoesData = Object.values(data.shoes);
-    console.log(this.app.shoesData)
-    this.partial('./templates/home/home.hbs', data);
+     Object.assign(data, this.app.userData);
+    if (shoes) {
+        this.app.shoesData = Object.values(data.shoes);
+    }
+   console.log(this.app.shoesData);
+   this.partial('./templates/home/home.hbs', data);
 
 
 }

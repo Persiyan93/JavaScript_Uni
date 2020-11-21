@@ -15,14 +15,13 @@ export async function registerPost() {
     if (email.length == 0 || password < 6 || password != repeatedPassword) {
         return;
     }
-    
+
     firebase.auth().createUserWithEmailAndPassword(email, password)
         .then((user) => {
             console.log(user);
             this.redirect('#/home');
         })
         .catch((error) => {
-
             var errorMessage = error.message;
             alert(errorMessage)
         });

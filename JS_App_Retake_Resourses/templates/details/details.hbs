@@ -11,10 +11,11 @@
     </div>
     <div class="actions">
         {{#if isAuthor}}
-        <a>Edit</a>
+        <a action="#/edit{{id}}">Edit</a>
         <a>Delete</a>
-        {{/if}}
+        {{else}}
         <a>Buy</a>
+        {{/if}}
         <span style="display: none;"  >You bought it</span>
     </div>
 </div>

@@ -15,7 +15,6 @@ window.addEventListener('load', () => {
         }
         this.shoesData={};
 
-
         this.get('/', home);
         this.get('#/home',home);
         this.get('index.html',home);
@@ -27,6 +26,7 @@ window.addEventListener('load', () => {
         this.post('#/login',(ctx)=>{loginPost.call(ctx)})
         this.post('#/create',(ctx)=>{createPost.call(ctx)})
         this.get('#/logout',logout);
+        this.get('#/edit',edit);
         
 
 
