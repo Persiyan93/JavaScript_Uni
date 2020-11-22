@@ -5,6 +5,7 @@ import create ,{createPost}from './Controllers/create.js'
 import details from './Controllers/details.js'
 import logout from './Controllers/logout.js';
 import edit,{editPost} from './Controllers/edit.js'
+import deleteOffer from './Controllers/delete.js';
 
 
 window.addEventListener('load', () => {
@@ -29,6 +30,7 @@ window.addEventListener('load', () => {
         this.get('#/logout',logout);
         this.get('#/edit:id',edit);
         this.post('#/edit:id',(ctx)=>{editPost.call(ctx)})
+        this.get('#/delete:id',deleteOffer);
 
         
 

@@ -8,13 +8,14 @@ export default async function () {
     this.partial('./templates/create.hbs', this.app.userData);
 }
 export async function createPost() {
+   
+    let { brand, description, img, name, price } = this.params
     console.log(this.params)
-    let { brand, description, img, model, price } = this.params
     let newShoe = {
         brand,
         description,
         img,
-        model,
+        name,
         price,
         authorId: localStorage.getItem('userToken'),
         boughtBy: []

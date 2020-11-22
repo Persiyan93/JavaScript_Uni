@@ -16,13 +16,23 @@ export async function createShoe(shoe) {
 }
 export async function editShoe(shoe) {
      let {id}=shoe;
-     return await(fetch(`https://shoes-ba7be.firebaseio.com/shoes${id}`, {
-          method: 'PUT',
-          credentials: 'include',
-          headers: {
-               'Content-Type': 'application/json'
+     let html=`https://shoes-ba7be.firebaseio.com/shoes/${id}.json`
+     return await(fetch(html, {
+          method: 'PATCH',
+           headers: {
+               'Content-Type': 'application/json',
+               'Access-Control-Allow-Origin': '*',
           },
           body: JSON.stringify(shoe)
      }).then((response)=>response.json()))
+  
+}
+export async function deleteOffert(id) {
+     let html=`https://shoes-ba7be.firebaseio.com/shoes/${id}.json`
+      return await(fetch(html, {
+          method: 'DELETE',
+           headers: {
+               'Content-Type': 'application/json'
+            }}).then((response)=>response.json()))
   
 }

@@ -7,7 +7,8 @@ export default async function () {
 
     }
     let currentShoe = this.app.shoesData.filter(x => x.id === this.params.id)[0];
-    console.log(this.params)
+    console.log(this.params);
+    console.log(currentShoe);
     this.partial('./templates/edit.hbs', currentShoe);
 
 }
@@ -23,5 +24,6 @@ export default async function () {
             id
         }
        await editShoe(editedShoe);
+       this.redirect(`#/details${id}`)
     }
 
