@@ -9,13 +9,11 @@ export default async function () {
     }
     let shoes=await getShoes();
     let currentShoe =shoes.filter(x => x.id === this.params.id)[0];
-    console.log(this.params);
-    console.log(currentShoe);
-    this.partial('./templates/edit.hbs', currentShoe);
+   this.partial('./templates/edit.hbs', currentShoe);
 
 }
     export async function editPost() {
-        console.log(this.params)
+        
         let { name, price, img, description, brand ,id} = this.params
         let editedShoe={
             name,

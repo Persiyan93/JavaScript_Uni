@@ -36,17 +36,6 @@ window.addEventListener('load', () => {
         this.post('#/edit:id',(ctx)=>{editPost.call(ctx)})
         this.get('#/delete:id',deleteOffer);
         this.get('#/buy:id',buy);
-
-
-        
-
-
-
-
-
-
-
-
-    })
+ })
     app.run();
 })

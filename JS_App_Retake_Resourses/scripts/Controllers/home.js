@@ -8,13 +8,12 @@ export default async function () {
 
 
     let shoes = await getShoes();
-    console.log(shoes)
     let data = { shoes };
     Object.assign(data, this.app.userData);
     if (shoes) {
         this.app.shoesData = Object.values(data.shoes);
     }
-    console.log(this.app.userData);
+
     this.partial('./templates/home/home.hbs', data);
 
 

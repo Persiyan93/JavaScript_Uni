@@ -8,9 +8,8 @@ export default async function () {
     this.partial('./templates/create.hbs', this.app.userData);
 }
 export async function createPost() {
-   
+
     let { brand, description, img, name, price } = this.params
-    console.log(this.params)
     let newShoe = {
         brand,
         description,

@@ -13,13 +13,11 @@ export async function loginPost() {
     let { email, password } = this.params;
    await firebase.auth().signInWithEmailAndPassword(email, password)
         .then((user) => {
-            console.log(user);
-            console.log(this);
             this.app.userData.loggedIn=true;
             this.app.userData.email=email
             localStorage.setItem('userToken',user.user.uid)
             localStorage.setItem('useremail',user.user.email)
-            console.log('test');
+            this.redirect('#/home');
             
             
         })
@@ -27,5 +25,5 @@ export async function loginPost() {
             var errorMessage = error.message;
             alert(errorMessage);
         });
-        this.redirect('#/home')
+    
 }

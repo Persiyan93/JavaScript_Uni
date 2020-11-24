@@ -1,4 +1,4 @@
-import {deleteOffert} from '../data.js'
+import { deleteOffert } from '../data.js'
 export default async function () {
     this.partials = {
         header: await this.load('./templates/common/header.hbs'),
@@ -6,8 +6,8 @@ export default async function () {
 
     }
 
-   await deleteOffert(this.params.id);
-   this.redirect('#/home');
-  
+    await deleteOffert(this.params.id);
+    this.redirect('#/home');
+
 
 }
