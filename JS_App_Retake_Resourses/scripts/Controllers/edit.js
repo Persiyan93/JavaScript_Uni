@@ -1,12 +1,14 @@
 
-import {editShoe} from '../data.js';
+import {editShoe,getShoes} from '../data.js';
+
 export default async function () {
     this.partials = {
         header: await this.load('./templates/common/header.hbs'),
         footer: await this.load('./templates/common/footer.hbs')
 
     }
-    let currentShoe = this.app.shoesData.filter(x => x.id === this.params.id)[0];
+    let shoes=await getShoes();
+    let currentShoe =shoes.filter(x => x.id === this.params.id)[0];
     console.log(this.params);
     console.log(currentShoe);
     this.partial('./templates/edit.hbs', currentShoe);

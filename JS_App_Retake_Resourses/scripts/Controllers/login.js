@@ -1,3 +1,5 @@
+
+
 export default async function () {
     this.partials = {
         header: await this.load('./templates/common/header.hbs'),
@@ -9,19 +11,21 @@ export default async function () {
 }
 export async function loginPost() {
     let { email, password } = this.params;
-    console.log(this);
-    firebase.auth().signInWithEmailAndPassword(email, password)
+   await firebase.auth().signInWithEmailAndPassword(email, password)
         .then((user) => {
             console.log(user);
+            console.log(this);
             this.app.userData.loggedIn=true;
             this.app.userData.email=email
             localStorage.setItem('userToken',user.user.uid)
             localStorage.setItem('useremail',user.user.email)
-            this.redirect('#/home')
+            console.log('test');
+            
             
         })
         .catch((error) => {
             var errorMessage = error.message;
             alert(errorMessage);
         });
+        this.redirect('#/home')
 }

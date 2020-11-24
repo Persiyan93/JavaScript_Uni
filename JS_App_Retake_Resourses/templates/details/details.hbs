@@ -5,18 +5,24 @@
         <img src="{{img}}" alt="">
         <div class="description">{{description}}
             <br>
-            <br>
+            {{#if boughtBy}}
+            Buyers: {{boughtBy.length}}
+            {{/if}}
+            </br>
             <p class="price">${{price}}</p>
         </div>
     </div>
     <div class="actions">
         {{#if isAuthor}}
-        <a href="#/edit{{id}}" >Edit</a>
+        <a href="#/edit{{id}}">Edit</a>
         <a href="#/delete{{id}}"> Delete</a>
         {{else}}
+        <div>
+            <p> </p>
+        </div>
         <a href="#/buy{{id}}">Buy</a>
         {{/if}}
-        <span style="display: none;"  >You bought it</span>
+        <span style="display: none;">You bought it</span>
     </div>
 </div>
 {{>footer}}

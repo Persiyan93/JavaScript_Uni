@@ -5,9 +5,17 @@ export default async function () {
         footer: await this.load('./templates/common/footer.hbs'),
     }
 
-    localStorage.clear();
-    delete this.app.userData;
-    delete this.app.shoes;
-    this.redirect('#/home');
-  
+    await firebase.auth().signOut().then(() => {
+        localStorage.clear();
+        this.app.userData.loggedIn = false;
+        this.redirect('#/home');
+
+    }).catch(function (error) {
+        alert(error);
+    });
+    
+
+
+
+
 }
