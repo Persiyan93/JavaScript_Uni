@@ -9,10 +9,15 @@
         <div class="col-md-4 text-center">
             <h3 class="my-3 ">Movie Description</h3>
             <p>{{movie.description}}</p>
+            {{#if isAuthor}}
             <a class="btn btn-danger" href="#">Delete</a>
             <a class="btn btn-warning" href="#">Edit</a>
+            {{else}}
             <a class="btn btn-primary" href="#">Like</a>
+            {{/if}}
+            {{#if likedBy }}
             <span class="enrolled-span">Liked 1</span>
+            {{/if}}
         </div>
     </div>
 </div>
