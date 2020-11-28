@@ -9,8 +9,13 @@ export default async function () {
     let movies=await getMovies()
     console.log(movies);
     let movie=movies.filter(x=>x.id==this.params.id)[0];
+    console.log(movie.authorId);
+    console.log(localStorage.getItem('userToken'));
+    if (movie.authorId==localStorage.getItem('userToken')) {
+        movie.isAuthor=true;
+        console.log('inside')
+    }
     let data={movie};
     Object.assign(data,this.app.userData);
-    
-    this.partial('../templates/details.hbs',data);
+     this.partial('../templates/details.hbs',data);
 }
