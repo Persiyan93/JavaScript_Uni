@@ -4,6 +4,8 @@ import logout from './Controlers/logout.js';
 import register, { registerPost } from './Controlers/register.js';
 import { getMovies } from './services.js';
 import details from './Controlers/details.js';
+import deleteMovie from './Controlers/deleteMovie.js';
+import editMovie from './Controlers/editMovie.js';
 import addMovie, { postMovie } from './Controlers/addMovie.js';
 
 
@@ -28,6 +30,10 @@ window.addEventListener('load', () => {
         this.get('#/details:id', details);
         this.get('#/addMovie', addMovie);
         this.post('#/addMovie', (ctx) => { postMovie.call(ctx) });
+        this.get('#/delete:id', (ctx) => { deleteMovie.call(ctx) });
+        this.get('#/edit:id', (ctx) => { editMovie.call(ctx) });
+        
+        
 
 
     });

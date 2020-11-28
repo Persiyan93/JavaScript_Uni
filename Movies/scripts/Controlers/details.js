@@ -15,6 +15,7 @@ export default async function () {
         movie.isAuthor=true;
         console.log('inside')
     }
+    console.log(movie);
     let data={movie};
     Object.assign(data,this.app.userData);
      this.partial('../templates/details.hbs',data);
