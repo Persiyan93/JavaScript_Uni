@@ -13,5 +13,9 @@
     "handlebars": "^4.7.6",
     "jquery": "^3.5.1",
     "sammy": "^0.7.6"
+  },
+  "devDependencies": {
+    "lite": "^4.0.5",
+    "server": "^1.0.31"
   }
 }
