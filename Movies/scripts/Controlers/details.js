@@ -3,18 +3,14 @@ export default async function () {
     this.partials = {
         header: await this.load('../templates/common/header.hbs'),
         footer: await this.load('../templates/common/footer.hbs'),
-        movieDetail: await this.load('../templates/home/movieDetail.hbs'),
+       
 
     }
-
-
-
-    let data = {
-        movies:await getMovies()
-    }
-    Object.assign(data, this.app.userData);
+    let movies=await getMovies()
+    console.log(movies);
+    let movie=movies.filter(x=>x.id==this.params.id)[0];
+    let data={movie};
+    Object.assign(data,this.app.userData);
     
-    this.partial('../templates/home.hbs', data);
-
-
+    this.partial('../templates/details.hbs',data);
 }

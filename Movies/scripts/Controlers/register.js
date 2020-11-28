@@ -27,7 +27,7 @@ export async function registerPost() {
     }
     await firebase.auth().createUserWithEmailAndPassword(email, password)
         .then((user) => {
-            console.log(user);
+            this.redirect('#/home');
         })
         .catch((error) => {
             var errorMessage = error.message;
