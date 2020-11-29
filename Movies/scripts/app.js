@@ -5,8 +5,9 @@ import register, { registerPost } from './Controlers/register.js';
 import { getMovies } from './services.js';
 import details from './Controlers/details.js';
 import deleteMovie from './Controlers/deleteMovie.js';
-import editMovie from './Controlers/editMovie.js';
+import editMovie,{editMoviePost} from './Controlers/editMovie.js';
 import addMovie, { postMovie } from './Controlers/addMovie.js';
+import likeMovie from './Controlers/likeMovie.js';
 
 
 window.addEventListener('load', () => {
@@ -32,6 +33,8 @@ window.addEventListener('load', () => {
         this.post('#/addMovie', (ctx) => { postMovie.call(ctx) });
         this.get('#/delete:id', (ctx) => { deleteMovie.call(ctx) });
         this.get('#/edit:id', (ctx) => { editMovie.call(ctx) });
+        this.post('#/edit:id', (ctx) => { editMoviePost.call(ctx) });
+        this.get('#/like:id', (ctx) => { likeMovie.call(ctx) });
         
         
 

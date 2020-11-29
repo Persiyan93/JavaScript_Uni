@@ -30,28 +30,29 @@ export async function deleteMovie(id) {
     }).then((response) => response.json()))
 
 }
-// export async function buy(shoe) {
-//     let html = `https://shoes-ba7be.firebaseio.com/shoes/${shoe.id}.json`
-//     return await (fetch(html, {
-//          method: 'PATCH',
-//          headers: {
-//               'Content-Type': 'application/json',
-//               'Access-Control-Allow-Origin': '*',
-//          },
-//          body: JSON.stringify(shoe)
-//     }).then((response) => response.json()))
+export async function editMovie(movie) {
+    let { id } = movie;
+    let html = `https://movies-50730.firebaseio.com/movies/${id}.json`
+    return await (fetch(html, {
+         method: 'PATCH',
+         headers: {
+              'Content-Type': 'application/json',
+              'Access-Control-Allow-Origin': '*',
+         },
+         body: JSON.stringify(movie)
+    }).then((response) => response.json()))
 
-// }
-// export async function editShoe(shoe) {
-//     let { id } = shoe;
-//     let html = `https://shoes-ba7be.firebaseio.com/shoes/${id}.json`
-//     return await (fetch(html, {
-//          method: 'PATCH',
-//          headers: {
-//               'Content-Type': 'application/json',
-//               'Access-Control-Allow-Origin': '*',
-//          },
-//          body: JSON.stringify(shoe)
-//     }).then((response) => response.json()))
+}
+export async function likeMovie(movie) {
+    let html = `https://movies-50730.firebaseio.com/movies/${movie.id}.json`
+    return await (fetch(html, {
+         method: 'PATCH',
+         headers: {
+              'Content-Type': 'application/json',
+              'Access-Control-Allow-Origin': '*',
+         },
+         body: JSON.stringify(movie)
+    }).then((response) => response.json()))
 
-// }
+}
+

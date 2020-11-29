@@ -14,8 +14,14 @@ export default async function () {
     if (movie.authorId==localStorage.getItem('userToken')) {
         movie.isAuthor=true;
         console.log('inside')
+    } 
+    else if (movie.likedBy) {
+        if(movie.likedBy.includes(localStorage.getItem('userEmail'))){
+            movie.userLiked=true;
+        }
     }
-    console.log(movie);
+    
+   
     let data={movie};
     Object.assign(data,this.app.userData);
      this.partial('../templates/details.hbs',data);
