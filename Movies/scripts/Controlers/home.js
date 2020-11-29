@@ -10,10 +10,10 @@ export default async function () {
 
 
     let data = {
-        movies:await getMovies()
+        movies: await getMovies()
     }
     Object.assign(data, this.app.userData);
-    
+
     this.partial('../templates/home.hbs', data);
 
 
