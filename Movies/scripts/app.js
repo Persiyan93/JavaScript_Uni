@@ -8,6 +8,7 @@ import deleteMovie from './Controlers/deleteMovie.js';
 import editMovie,{editMoviePost} from './Controlers/editMovie.js';
 import addMovie, { postMovie } from './Controlers/addMovie.js';
 import likeMovie from './Controlers/likeMovie.js';
+import searchMovie from './Controlers/search.js';
 
 
 window.addEventListener('load', () => {
@@ -35,6 +36,7 @@ window.addEventListener('load', () => {
         this.get('#/edit:id', (ctx) => { editMovie.call(ctx) });
         this.post('#/edit:id', (ctx) => { editMoviePost.call(ctx) });
         this.get('#/like:id', (ctx) => { likeMovie.call(ctx) });
+        this.get('#/search',searchMovie);
         
         
 
