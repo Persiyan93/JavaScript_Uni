@@ -1,7 +1,7 @@
 import { addPartials } from '../util.js'
 export default async function () {
     await addPartials(this);
-    console.log(this);
+    
 
 
 
@@ -10,7 +10,7 @@ export default async function () {
     // }
     // Object.assign(data, this.app.userData);
     // console.log(this.app);
-     this.partial('../templates/home.hbs');
+     this.partial('../templates/register.hbs');
 
 
 }
