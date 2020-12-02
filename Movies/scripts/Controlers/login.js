@@ -12,10 +12,11 @@ export default async function () {
 
 }
 export async function loginPost() {
-    console.log('logged')
+    
     let { email, password } = this.params;
     await firebase.auth().signInWithEmailAndPassword(email, password)
         .then((user) => {
+            console.log(user);
             localStorage.setItem('userToken', user.user.uid);
             localStorage.setItem('userEmail', user.user.email);
             

@@ -2,7 +2,6 @@ import home from './Controlers/home.js';
 import login, { loginPost } from './Controlers/login.js';
 import logout from './Controlers/logout.js';
 import register, { registerPost } from './Controlers/register.js';
-import { getMovies } from './services.js';
 import details from './Controlers/details.js';
 import deleteMovie from './Controlers/deleteMovie.js';
 import editMovie,{editMoviePost} from './Controlers/editMovie.js';
@@ -14,6 +13,7 @@ import searchMovie from './Controlers/search.js';
 window.addEventListener('load', () => {
 
     const app = Sammy('#container', function () {
+        console.log(this);
         this.use('Handlebars', 'hbs');
         this.userData = {
             loggedIn: () => localStorage.getItem('userToken'),

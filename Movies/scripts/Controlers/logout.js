@@ -6,12 +6,14 @@ export default async function () {
     }
 
     await firebase.auth().signOut().then(function () {
-        localStorage.clear();
-        console.log(this.app.user)
+        localStorage.setItem('userToken','');
+        localStorage.setItem('userEmail', '');
+        console.log('unlog');
+        
 
 
     }).catch(function (error) {
-        // An error happened.
+    console.log(error)
     });
     this.redirect('#/home');
 

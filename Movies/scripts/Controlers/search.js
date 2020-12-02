@@ -12,8 +12,7 @@ export default async function () {
    let movies=allMovies.filter(x=>x.title.includes(this.params.title));
    let data={movies};
    Object.assign(data,this.app.userData);
-   console.log(data);
-   this.partial('../templates/home.hbs', data);
+    this.partial('../templates/home.hbs', data);
 
 
 

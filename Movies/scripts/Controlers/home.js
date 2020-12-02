@@ -13,7 +13,7 @@ export default async function () {
         movies: await getMovies()
     }
     Object.assign(data, this.app.userData);
-
+    console.log(this.app);
     this.partial('../templates/home.hbs', data);
 
 
