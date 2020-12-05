@@ -1,5 +1,7 @@
 import { addPartials } from '../util.js'
 import { loginUser } from '../data.js'
+import { errorMessage } from './notification.js'
+
 
 export default async function () {
     await addPartials(this);
@@ -20,11 +22,14 @@ export async function loginPost() {
         let email = response.user.email;
         localStorage.setItem('userId', userid)
         localStorage.setItem('userEmail', email)
+        this.redirect('/home')
     } catch (error) {
-        console.log(error)
+        console.log(error);
+        console.log(error.message)
+        errorMessage(error.message)
         return
     }
-    this.redirect('/home')
+   
 
 
 }

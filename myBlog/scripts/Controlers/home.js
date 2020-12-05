@@ -1,5 +1,6 @@
 import { addPartials } from '../util.js'
 import { getArticles } from '../data.js';
+import { successMessage } from './notification.js';
 
 export default async function () {
     await addPartials(this);
@@ -12,6 +13,7 @@ export default async function () {
         data.articles=articles;
         
     }
+
     
     
     this.partial('../templates/home.hbs', data);

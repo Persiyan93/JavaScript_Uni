@@ -6,5 +6,5 @@ export default async function () {
 
     let article = await getArticle(this.params.id);
     let data = Object.assign({}, article, this.app.userData);
-    this.partial('../templates/edit.hbs', data);
+    this.partial('../templates/details.hbs', data);
 }   
