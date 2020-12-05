@@ -1,5 +1,4 @@
 
-
 const baseUrl = 'https://softwiki-976ab-default-rtdb.firebaseio.com/articles'
 let url = {
     createArticle: baseUrl + '.json',
@@ -31,11 +30,15 @@ export async function getArticles() {
         return Object.values(request);
     }
 
-   
+
 }
-export async function deleteArticle(id){
-    let url=baseUrl+`/${id}.json`
-    let response =await database(url,'DELETE');
+export async function deleteArticle(id) {
+    let url = baseUrl + `/${id}.json`
+    let response = await database(url, 'DELETE');
+}
+export function getArticle(id) {
+    let url = baseUrl + `/${id}.json`;
+    return database(url, 'GET');
 }
 
 export async function database(url, method, body) {

@@ -10,7 +10,7 @@ export default async function () {
         authorId
     }
     Object.assign(article,this.params);
-    createArticle(article);
+   await createArticle(article);
     this.redirect('/home')
 }
 

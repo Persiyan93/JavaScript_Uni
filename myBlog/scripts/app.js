@@ -4,6 +4,9 @@ import login, { loginPost } from './Controlers/login.js'
 import register, { registerPost } from './Controlers/register.js'
 import createArticle from './Controlers/createArticle.js'
 import deleteArticle from './Controlers/deleteArticle.js'
+import details from './Controlers/articleDetails.js'
+import editArticle from './Controlers/editArticle.js'
+
 
 
 window.addEventListener('load', () => {
@@ -26,11 +29,12 @@ window.addEventListener('load', () => {
         this.get('/logout', logout);
         this.post('/create', (ctx) => { createArticle.call(ctx) });
         this.get('/delete:id', (ctx) => { deleteArticle.call(ctx) });
-        // this.get('#/details:id', details);
+         this.get('/details:id', details);
+         this.get('/edit:id', (ctx) => { editArticle.call(ctx) });
         // this.get('#/addMovie', addMovie);
 
         
-        // this.get('#/edit:id', (ctx) => { editMovie.call(ctx) });
+      
         // this.post('#/edit:id', (ctx) => { editMoviePost.call(ctx) });
         // this.get('#/like:id', (ctx) => { likeMovie.call(ctx) });
         // this.get('#/search',searchMovie);
