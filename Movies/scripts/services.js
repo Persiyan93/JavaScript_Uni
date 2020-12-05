@@ -1,3 +1,4 @@
+
 export async function getMovies() {
     let html = 'https://movies-50730.firebaseio.com/movies.json'
     let result = await (fetch(html).then((request) => request.json()));

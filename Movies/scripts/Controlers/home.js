@@ -1,4 +1,5 @@
 import { getMovies } from '../services.js'
+import notification from '../Controlers/notification.js'
 export default async function () {
     this.partials = {
         header: await this.load('../templates/common/header.hbs'),
@@ -8,7 +9,7 @@ export default async function () {
     }
 
 
-
+    notification();
     let data = {
         movies: await getMovies()
     }
