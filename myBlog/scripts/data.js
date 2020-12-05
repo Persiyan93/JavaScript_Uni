@@ -1,24 +1,59 @@
+
+
+const baseUrl = 'https://softwiki-976ab-default-rtdb.firebaseio.com/articles'
+let url = {
+    createArticle: baseUrl + '.json',
+    getArticles: baseUrl + '.json'
+}
+
 export async function registerUser(user) {
     let { email, password } = user;
-    console.log(user)
     return firebase.auth().createUserWithEmailAndPassword(email, password)
-        .then((user) => {
 
-        })
-        .catch((error) => {
-            var errorMessage = error.message;
-
-        });
 }
 export async function loginUser(user) {
     let { email, password } = user;
-    console.log(user)
     return firebase.auth().signInWithEmailAndPassword(email, password)
-        
+
 }
 
+export async function createArticle(article) {
 
+    return database(url.createArticle, 'POST', article);
+}
+export async function getArticles() {
+    let request = await database(url.getArticles, 'GET');
+    for (const key in request) {
+        request[key].id = key;
 
+    }
+    if (request) {
+        return Object.values(request);
+    }
+
+   
+}
+export async function deleteArticle(id){
+    let url=baseUrl+`/${id}.json`
+    let response =await database(url,'DELETE');
+}
+
+export async function database(url, method, body) {
+    let options = {
+        method
+    }
+    if (body) {
+        Object.assign(options, {
+            headers: {
+                'Content-Type': 'aplication/json'
+            },
+            body: JSON.stringify(body)
+        })
+    }
+    let response = await fetch(url, options);
+    let data = await response.json();
+    return data;
+}
 
 
 
@@ -39,22 +74,7 @@ export async function loginUser(user) {
 
 // }
 
-// export async function database(url, method, body) {
-//     let options = {
-//         method
-//     }
-//     if (body) {
-//         Object.assign(options, {
-//             headers: {
-//                 'Content-Type': 'aplication/json'
-//             },
-//             body: JSON.stringify(body)
-//         })
-//     }
-//     let response = await fetch(url, options);
-//     let data = await response.json();
-//     return data;
-// }
+
 
 
 // export async function getMovies() {

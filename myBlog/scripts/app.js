@@ -1,6 +1,9 @@
 import home from './Controlers/home.js'
-import login,{loginPost} from './Controlers/login.js'
-import register,{registerPost} from './Controlers/register.js'
+import logout from './Controlers/logout.js'
+import login, { loginPost } from './Controlers/login.js'
+import register, { registerPost } from './Controlers/register.js'
+import createArticle from './Controlers/createArticle.js'
+import deleteArticle from './Controlers/deleteArticle.js'
 
 
 window.addEventListener('load', () => {
@@ -9,8 +12,8 @@ window.addEventListener('load', () => {
     const app = Sammy('#root', function () {
         this.use('Handlebars', 'hbs');
         this.userData = {
-            loggedIn: () => localStorage.getItem('userToken'),
-            email: () => localStorage.getItem('userEmail'),
+            loggedIn: ()=>localStorage.getItem('userId'),
+            email:()=> localStorage.getItem('userEmail'),
 
         }
         this.get('/', home);
@@ -19,12 +22,14 @@ window.addEventListener('load', () => {
         this.get('/login', login)
         this.get('/register', register)
         this.post('/register', (ctx) => { registerPost.call(ctx) });
-         this.post('/login', (ctx) => { loginPost.call(ctx) });
-        // this.get('#/logout', logout);
+        this.post('/login', (ctx) => { loginPost.call(ctx) });
+        this.get('/logout', logout);
+        this.post('/create', (ctx) => { createArticle.call(ctx) });
+        this.get('/delete:id', (ctx) => { deleteArticle.call(ctx) });
         // this.get('#/details:id', details);
         // this.get('#/addMovie', addMovie);
-        // this.post('#/addMovie', (ctx) => { postMovie.call(ctx) });
-        // this.get('#/delete:id', (ctx) => { deleteMovie.call(ctx) });
+
+        
         // this.get('#/edit:id', (ctx) => { editMovie.call(ctx) });
         // this.post('#/edit:id', (ctx) => { editMoviePost.call(ctx) });
         // this.get('#/like:id', (ctx) => { likeMovie.call(ctx) });

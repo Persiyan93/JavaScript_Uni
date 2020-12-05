@@ -22,7 +22,8 @@ export async function registerPost() {
 
     }
     try {
-        await  registerUser(user);
+        let response = await registerUser(user);
+        this.redirect('/login');
     } catch (error) {
         console.log(error)
     }

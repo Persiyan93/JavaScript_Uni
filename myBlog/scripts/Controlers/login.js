@@ -13,11 +13,18 @@ export async function loginPost() {
         email,
         password,
     }
- console.log( )
- try {
-    await loginUser(user)
- } catch (error) {
-     console.log(error)
- }
+
+    try {
+        let response = await loginUser(user);
+        let userid = response.user.uid;
+        let email = response.user.email;
+        localStorage.setItem('userId', userid)
+        localStorage.setItem('userEmail', email)
+    } catch (error) {
+        console.log(error)
+        return
+    }
+    this.redirect('/home')
+
 
 }
