@@ -1,11 +1,11 @@
-import home from './Controlers/home.js'
-import logout from './Controlers/logout.js'
-import login, { loginPost } from './Controlers/login.js'
-import register, { registerPost } from './Controlers/register.js'
-import createArticle from './Controlers/createArticle.js'
-import deleteArticle from './Controlers/deleteArticle.js'
-import details from './Controlers/articleDetails.js'
-import editArticle from './Controlers/editArticle.js'
+import home from './Controllers/home.js'
+import logout from './Controllers/logout.js'
+import login, { loginPost } from './Controllers/login.js'
+import register, { registerPost } from './Controllers/register.js'
+import createArticle from './Controllers/createArticle.js'
+import deleteArticle from './Controllers/deleteArticle.js'
+import details from './Controllers/articleDetails.js'
+import editArticle from './Controllers/editArticle.js'
 
 
 

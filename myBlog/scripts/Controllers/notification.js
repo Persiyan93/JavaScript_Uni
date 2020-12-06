@@ -11,7 +11,7 @@ export function successMessage(message) {
 
 }
 function hideMessage(element) {
-    console.log('hide')
+   
     element.setAttribute('style', 'display : none')
 }
 
