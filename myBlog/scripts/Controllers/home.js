@@ -16,5 +16,5 @@ export default async function () {
 
     
     
-    this.partial('../templates/home.hbs', data);
+    this.partial('../templates/home.hbs');
 }   
