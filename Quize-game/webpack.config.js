@@ -1,5 +1,7 @@
 module.exports={
     entry:"/src/app.js",
-   
-    watch:true
+   watch:true,
+    devServer:{
+        contentBase:'./dist'
+    }
 };
