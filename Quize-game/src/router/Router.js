@@ -7,6 +7,9 @@ export default class Router{
     }
     navigate (path){
         let route=this.routes.filter(x=>x.path===path)[0];
+        if (!route) {
+            return
+        }
         this.root.innerHTML=route.renderView();
     }
 }
