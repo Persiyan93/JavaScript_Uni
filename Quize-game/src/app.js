@@ -1,29 +1,27 @@
-// import Route from './router/Route.js';
-// import Router from './router/Router.js';
-// import testView from './views/test.hbs';
-// import login from './views/login.hbs';
+ import Route from './router/Route.js';
+ import Router from './router/Router.js';
+ import routes from './router/routes.js';
 
 
-// let routes = [new Route('test', testView, '#home')];
-// routes.push(new Route('login', login, '#login'))
-// let router = new Router(routes, document.querySelector('#root'));
-
+let router = new Router(routes, document.querySelector('#root'));
+router.listen();
 function addEventListener() {
     document.querySelector('#root').addEventListener('click', navigateHandler);
 
 }
-
 function navigateHandler(e) {
     e.preventDefault()
-    console.log(e.target.href);
+    console.log(location.pathname)
     let url=new URL(e.target.href);
-    console.log(url);
-    history.pushState({},'',url.pathname.slice(1))
+    router.navigate(url.pathname.slice(1));
 
 
 
 
 }
+window.addEventListener('popstate',(e)=>{
+console.log(e)
+},true)
 addEventListener();
 
 
