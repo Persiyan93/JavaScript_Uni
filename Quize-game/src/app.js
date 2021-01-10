@@ -1,39 +1,45 @@
- import Route from './router/Route.js';
- import Router from './router/Router.js';
- import routes from './router/routes.js';
+import Router from './router/Router.js';
+import routes from './router/routes.js';
 
 
-let router = new Router(routes, document.querySelector('#root'));
-router.listen();
-function addEventListener() {
-    document.querySelector('#root').addEventListener('click', navigateHandler);
+console.log(document.querySelector('#root'))
+let rootDiv=document.querySelector('#root')
 
-}
-function navigateHandler(e) {
+let router = new Router(routes,rootDiv);
+
+router.initialLoad()
+
+function test(event){
     e.preventDefault()
-    console.log(location.pathname)
-    let url=new URL(e.target.href);
-    router.navigate(url.pathname.slice(1));
+    console.log('inside Register Submit');
+}
 
-
-
+function addEventListener() {
+    document.querySelector('#root').addEventListener('click', navigateForward,{once:true});
+    window.addEventListener('popstate', navigateBack)
+    
 
 }
-window.addEventListener('popstate',(e)=>{
-console.log(e)
-},true)
+function navigateForward(e) {
+    e.preventDefault()
+    if (!e.target.href) {
+        return;
+    }
+
+    let url = new URL(e.target.href);
+   console.log(e);
+    console.log(url.pathname)
+    router.navigate(url.pathname.slice(1));
+}
+
+function navigateBack() {
+    console.log(location)
+    router.navigateBack(location.pathname.slice(1))
+}
+
 addEventListener();
 
 
 
 
-//  window.addEventListener('submit',e=>{
 
-//      console.log(e);
-//      setTimeout(console.log('Pesho'),100000000);
-//  })
-//  window.addEventListener('hashchange' ,e=>{
-//      e.preventDefault()
-//     console.log(e);
-//    router.navigate(e.target.location.hash);
-// })  

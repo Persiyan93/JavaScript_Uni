@@ -6,7 +6,7 @@ import homeView from '../views/home.hbs';
 let routes=[];
 routes.push(new Route('login',loginView,'login'));
 routes.push(new Route('register',registerView,'register'));
-routes.push(new Route('/',homeView,'register'));
+routes.push(new Route('home',homeView,'home'));
 
 export default routes;
 
