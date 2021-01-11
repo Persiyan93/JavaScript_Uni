@@ -9,7 +9,7 @@ let router = new Router(routes,rootDiv);
 
 router.initialLoad()
 
-function test(event){
+function test(e){
     e.preventDefault()
     console.log('inside Register Submit');
 }
