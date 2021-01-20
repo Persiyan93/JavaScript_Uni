@@ -1,44 +1,70 @@
 import Router from './router/Router.js';
 import routes from './router/routes.js';
 
-
-console.log(document.querySelector('#root'))
+window.myFunctions={};
 let rootDiv=document.querySelector('#root')
-
 let router = new Router(routes,rootDiv);
-
 router.initialLoad()
 
-function test(e){
+
+
+
+myFunctions.onRegisterSubmit=(e)=>{
+    console.log(e)
     e.preventDefault()
-    console.log('inside Register Submit');
-}
+    console.log(document.forms['register-form']);
+    let formData=new FormData(document.forms['register-form']);
+    let user ={};
+
+    console.log(formData.get('email'),formData.get('password')); 
+
+   
+ }
+
+ myFunctions.onLoginSubmit=(e)=>{
+    console.log(e)
+    e.preventDefault()
+    console.log(document.forms['register-form']);
+    let formData=new FormData(document.forms['register-form']);
+    let user ={};
+    
+    console.log(formData.get('email'),formData.get('password')); 
+
+   
+ }
+
+
+
+
+
+
+
+
 
 function addEventListener() {
-    document.querySelector('#root').addEventListener('click', navigateForward,{once:true});
+    document.querySelector('#root').addEventListener('click', navigateForward);
     window.addEventListener('popstate', navigateBack)
     
 
 }
 function navigateForward(e) {
-    e.preventDefault()
-    if (!e.target.href) {
+  
+
+     if (!e.target.href) {
         return;
     }
-
+    e.preventDefault()
     let url = new URL(e.target.href);
-   console.log(e);
-    console.log(url.pathname)
+   
     router.navigate(url.pathname.slice(1));
 }
 
 function navigateBack() {
-    console.log(location)
+    
     router.navigateBack(location.pathname.slice(1))
 }
 
 addEventListener();
-
 
 
 
