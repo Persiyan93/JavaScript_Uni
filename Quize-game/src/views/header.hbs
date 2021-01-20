@@ -1,0 +1,18 @@
+ <header id="header">
+      <h1>Quiz Game</h1>
+     {{!-- // <h2>Welcome <span>Name!</span>!</h2> --}}
+    
+    <nav id="nav">
+      <ul>
+        {{#if loggedIn}}
+
+        <li></li>
+        {{else}}
+        <li><a href="/newgame"> New Game </a></li>
+        <li><a href="/myhistory">My history</a></li>
+        <li><a href="/rankList">RankList</a></li>
+        <li><a href="/users">Find Friends</a></li>
+        {{/if}}
+      </ul>
+    </nav>
+  </header>
