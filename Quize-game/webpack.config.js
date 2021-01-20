@@ -1,19 +1,22 @@
 var path = require("path");
-var HtmlWebpackPlugin = require('html-webpack-plugin');
+
 module.exports={
     entry:"/src/app.js",
    
     output:{
         filename:"bundle.js",
-        path:path.resolve(__dirname,'dist2'),
+        path:path.resolve(__dirname,'dist'),
         libraryTarget: 'var',
         library: 'EntryPoint'
     },
+    mode: "development",
+    watch:true,
   
-   plugins: [new HtmlWebpackPlugin()],
-   mode: "development",
     devServer:{
-        contentBase:'./dist'
+        contentBase: __dirname,
+        historyApiFallback: {
+            index: 'index.html'
+          }
     },
     module: {
         rules: [
