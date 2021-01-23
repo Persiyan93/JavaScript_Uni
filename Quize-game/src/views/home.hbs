@@ -1,4 +1,5 @@
 {{>header}}
+{{#if loggedIn}}
 <h1>Quiz game</h1>
 <label for="category">Choose a category:</label>
 <select id="category" name="Category">
@@ -21,4 +22,15 @@
 <div class="buttons">
     <button>Start game</button>
 </div>
+{{else}}
+  <section id="home">
+    <section class="background-container">
+      <h1>Quiz Game </h1>
+      <div class="auth-buttons">
+        <a href="/login">Login</a>
+        <a href="/register">Register</a>
+      </div>
+    </section>
+  </section>
 
+{{/if}}
