@@ -14,3 +14,9 @@ export async function database(url, method, body) {
     let data = await response.json();
     return data;
 }
+export  function registerUser(email,password) {
+    return firebase.auth().createUserWithEmailAndPassword(email, password)
+}
+export function loginUser(email,password){
+    return firebase.auth().signInWithEmailAndPassword(email, password)
+}
