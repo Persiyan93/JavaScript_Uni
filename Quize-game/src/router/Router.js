@@ -6,12 +6,14 @@ export default class Router {
 
     }
     navigate(path) {
-        history.pushState({}, '', path)
+        let user={};
+        user.loggedIn=localStorage.getItem('userId');
+        history.pushState(user, '', path)
         let route = this.routes.filter(x => x.path === path)[0];
         if (!route) {
-            return
+            return;
         }
-        this.root.innerHTML = route.renderView();
+        this.root.innerHTML = route.renderView(user);
     }
     navigateBack(path) {
         let route = this.routes.filter(x => x.path === path)[0];

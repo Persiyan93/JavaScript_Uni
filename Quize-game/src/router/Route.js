@@ -6,8 +6,8 @@ export default class Route{
     
     }
      
-    renderView(){
-        return this.view();
+    renderView(info){
+        return this.view(info);
     }
     
 }

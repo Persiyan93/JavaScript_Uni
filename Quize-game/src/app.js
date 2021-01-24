@@ -12,7 +12,7 @@ router.initialLoad()
 
 myFunctions.onRegisterSubmit = async (e) => {
     e.preventDefault()
-    let formData = new FormData(document.forms['register-form']);
+    let formData = new FormData(document.forms['form']);
     let repeatPassword = formData.get('repeatPassword');
     let email = formData.get('email');
     let password = formData.get('password');
@@ -36,26 +36,19 @@ myFunctions.onRegisterSubmit = async (e) => {
 }
 
 myFunctions.onLoginSubmit = async (e) => {
-    console.log(e)
-    e.preventDefault()
-   let formData = new FormData(document.forms['login-form']);
+   e.preventDefault()
+   let formData = new FormData(document.forms['form']);
     let password = formData.get('password');
     let email = formData.get('email');
     console.log(email);
     console.log(password)
     let user=await loginUser(email,password);
-    console.log(user)
-
-
-
+    console.log(user);
+    localStorage.setItem('userId',user.user.uid);
+    localStorage.setItem('userEmail',user.user.email)  
+ 
 
 }
-
-
-
-
-
-
 
 
 
