@@ -1,18 +1,19 @@
-<form id="register-form"class="text-center border border-light p-5" action="" method="" onsubmit="myFunctions.onRegisterSubmit(event)">
-    <div class="form-group">
+{{>header}}
+<section id="register">
+    <div class="color">
+      <div class="register-form">
+        <h1>Register</h1>
+        <form id="form" action="" method="" onsubmit="myFunctions.onRegisterSubmit(event)">
         <label for="email">Email</label>
-        <input type="email" class="form-control" placeholder="Email" name="email" value="">
-    </div>
-    <div class="form-group">
-        <label for="password">Password</label>
-        <input type="password" class="form-control" placeholder="Password" name="password" value="">
-    </div>
-
-    <div class="form-group">
+        <input type="email"  placeholder="Email" name="email" value="">
+         <label for="password">Password</label>
+        <input type="password" placeholder="Password" name="password" value="">
         <label for="repeatPassword">Repeat Password</label>
-        <input type="password" class="form-control" pslaceholder="Repeat-Password" name="repeatPassword" value="">
+        <input type="password" placeholder ="Repeat-password" name="repeatPassword" value="">
+        <button type="submit">Register</button>
+        <a href="/login" class="option">Already have an account?</a>
+        </form>
     </div>
-
-    <button type="submit" class="btn btn-primary">Register</button>
-</form>
+    </div>
+  </section>
 
