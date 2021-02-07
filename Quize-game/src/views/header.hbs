@@ -3,13 +3,13 @@
   
       
       {{#if loggedIn}}
-      <h2>Welcome <span>Name!</span>!</h2>
+      <h2>Welcome <span>{{userEmail}}</span></h2>
       {{/if}}
     
     <nav id="nav">
       <ul>
         {{#if loggedIn}}
-        <li><a href="/newgame"> New Game </a></li>
+        <li><a href="/newgame" > New Game </a></li>
         <li><a href="/myhistory">My history</a></li>
         <li><a href="/rankList">RankList</a></li>
         <li><a href="/users">Find Friends</a></li>

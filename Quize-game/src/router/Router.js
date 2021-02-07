@@ -8,6 +8,8 @@ export default class Router {
     navigate(path) {
         let user={};
         user.loggedIn=localStorage.getItem('userId');
+        user.email=localStorage.getItem('userEmail');
+        console.log(user.email);
         history.pushState(user, '', path)
         let route = this.routes.filter(x => x.path === path)[0];
         if (!route) {

@@ -1,6 +1,6 @@
 import Router from './router/Router.js';
 import routes from './router/routes.js';
-import { registerUser,loginUser } from './data.js'
+import { registerUser,loginUser,getToken } from './data.js'
 
 window.myFunctions = {};
 let rootDiv = document.querySelector('#root')
@@ -22,11 +22,17 @@ myFunctions.onRegisterSubmit = async (e) => {
             throw new Error('Password must be 6 symbols at least')
         }
         else if (password == repeatPassword) {
-            await registerUser(email, password)
+            try {
+                await registerUser(email, password)
+            } catch (error) {
+                
+                console.log(error.message)
+            }
+           
         }
         else {
 
-            throw new Error('The two passwords must match');
+            throw new Error('Bouth passwords must match');
         }
     } catch (error) {
         console.log(error.message);
@@ -42,11 +48,31 @@ myFunctions.onLoginSubmit = async (e) => {
     let email = formData.get('email');
     console.log(email);
     console.log(password)
-    let user=await loginUser(email,password);
-    console.log(user);
-    localStorage.setItem('userId',user.user.uid);
-    localStorage.setItem('userEmail',user.user.email)  
+    try {
+        let user=await loginUser(email,password);
+        console.log(user);
+        localStorage.setItem('userId',user.user.uid);
+        localStorage.setItem('userEmail',user.user.email);
+        router.navigate('home');
+    } catch (error) {
+        console.log(error.message);
+    }
+  
+
+
  
+
+}
+
+myFunctions.startGame=async (e)=>{
+    e.preventDefault();
+    let formData=new FormData(document.forms['form']);
+    console.log(formData.get('Category'))
+    console.log(formData);
+    let {token}=await getToken();
+    localStorage.setItem('userToken',token);
+    console.log(token);
+    
 
 }
 

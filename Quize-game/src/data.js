@@ -20,3 +20,10 @@ export  function registerUser(email,password) {
 export function loginUser(email,password){
     return firebase.auth().signInWithEmailAndPassword(email, password)
 }
+
+export function getToken(){
+let url='https://opentdb.com/api_token.php?command=request';
+    return database(url,'GET');
+
+
+}
