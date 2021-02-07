@@ -24,6 +24,9 @@ export function loginUser(email,password){
 export function getToken(){
 let url='https://opentdb.com/api_token.php?command=request';
     return database(url,'GET');
+}
 
-
+export function generateQuestion(amount,category,difficulty){
+let url=`https://opentdb.com/api.php?amount=${amount}&category=${category}&difficulty=${difficulty}`;
+return database(url,'GET');
 }

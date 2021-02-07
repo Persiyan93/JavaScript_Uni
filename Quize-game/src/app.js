@@ -1,6 +1,6 @@
 import Router from './router/Router.js';
 import routes from './router/routes.js';
-import { registerUser,loginUser,getToken } from './data.js'
+import { registerUser,loginUser,getToken,generateQuestion } from './data.js'
 
 window.myFunctions = {};
 let rootDiv = document.querySelector('#root')
@@ -67,11 +67,15 @@ myFunctions.onLoginSubmit = async (e) => {
 myFunctions.startGame=async (e)=>{
     e.preventDefault();
     let formData=new FormData(document.forms['form']);
-    console.log(formData.get('Category'))
-    console.log(formData);
+    let category=formData.get('Category');
+    let difficulty=formData.get('difficulty');
+   
     let {token}=await getToken();
     localStorage.setItem('userToken',token);
-    console.log(token);
+    let reuslt=await generateQuestion(10,category,difficulty);
+    console.log(reuslt);
+    
+    
     
 
 }
